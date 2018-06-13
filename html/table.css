@@ -102,7 +102,7 @@ td {
 
 #left-table thead>tr,
 #right-table thead>tr {
-    width: calc(100% - 12px);
+    /* width: calc(100% - 12px); */
 }
 
 #left-table tbody,
@@ -192,7 +192,6 @@ td {
     /* left: 1px; */
     float: right;
     margin-right: 1px;
-    height: 100%;
     width: 1px;
     border-right: 1px solid;
     border-right-color: #cacaca;
