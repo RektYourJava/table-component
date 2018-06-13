@@ -64,7 +64,7 @@ $(document).ready(function () {
         var $resizeBar = $e.find('.resize-border');
         var id = parseInt($resizeBar.attr('data-id'), 10);
         headers[id] = {
-            width: $e.width()
+            width: 250
         }
     });
 
@@ -83,7 +83,7 @@ $(document).ready(function () {
 
         stop: function (e) {
             debugger;
-            mouseEnd = $(this).offset().left
+            mouseEnd = $(this).offset().left;
             var diff = mouseEnd - mouseStart;
             headers[id].width = headers[id].width + diff;
             headers[id].width = headers[id].width < 100 ? 100 : headers[id].width;
@@ -93,6 +93,8 @@ $(document).ready(function () {
 
             // reinit vars
             $('.resize-vertical-bar').hide();
+            $target.css('left', '0');
+            $target.css('top', '0');
         }
     })
 });
