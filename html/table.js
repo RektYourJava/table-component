@@ -50,4 +50,46 @@ $(document).ready(function() {
         $('#right-table tbody').scrollTop($(this).scrollTop());
         $('#right-table tbody').on('scroll', scrollFunction);
     });
+
+
+    // RESISABLE
+
+    var headers = {};
+    var mouseStart = -1;
+    var mouseEnd = -1;
+    var id = -1;
+    $('.resize-border').closest('th').each(function(i, e) {
+        debugger;
+        var $e = $(e);
+        var $resizeBar = $e.find('.resize-border');
+        var id = parseInt($resizeBar.attr('data-id'), 10);
+        headers[id] = {
+            width: $e.width()
+        }
+    });
+
+    $('.resize-border').draggable({
+        start: function(e) {
+            debugger;
+            var target = $(e.target);
+            id = target.attr('data-id');
+            mouseStart = $(this).offset().left;
+        },
+
+        drag: function(e) {
+
+        },
+
+        stop: function(e) {
+            debugger;
+            mouseEnd = $(this).offset().left
+            var diff = mouseEnd - mouseStart;
+            headers[id].width = headers[id].width + diff;
+            headers[id].width = headers[id].width < 0 ? 100 : headers[id].width;
+            var $target = $(e.target);
+            $target.closest('th').css('width', headers[id].width);
+
+            // reinit vars
+        }
+    })
 });

@@ -5,6 +5,7 @@
 <head>
     <link href="table.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="table.js"></script>
 </head>
 
@@ -14,11 +15,21 @@
             <table id="left-table">
                 <thead>
                     <TR>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                        <th>Column 3</th>
-                        <th>Column 4</th>
-                        <th>Column 5</th>
+                        <th>Column 1
+                            <div data-id="1" class="resize-border"></div>
+                        </th>
+                        <th>Column 2
+                            <div data-id="2" class="resize-border"></div>
+                        </th>
+                        <th>Column 3
+                            <div data-id="3" class="resize-border"></div>
+                        </th>
+                        <th>Column 4
+                            <div data-id="4" class="resize-border"></div>
+                        </th>
+                        <th>Column 5
+                            <div data-id="5" class="resize-border"></div>
+                        </th>
                     </TR>
                 </thead>
                 <tbody data-opposite-side="right">
