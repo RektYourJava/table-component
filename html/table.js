@@ -65,7 +65,17 @@ $(document).ready(function () {
         var id = parseInt($resizeBar.attr('data-id'), 10);
         headers[id] = {
             width: 250
-        }
+        };
+        $e.css({
+            'width': headers[id].width + 'px',
+            'max-width': headers[id].width + 'px',
+            'min-width': headers[id].width + 'px'
+        });
+        $e.closest('table').find('tr td:nth-child(' + id + ')').css({
+            'width': headers[id].width + 'px',
+            'max-width': headers[id].width + 'px',
+            'min-width': headers[id].width + 'px'
+        });
     });
 
     $('.resize-border').draggable({
