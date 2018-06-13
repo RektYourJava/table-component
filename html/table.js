@@ -71,11 +71,13 @@ $(document).ready(function () {
             'max-width': headers[id].width + 'px',
             'min-width': headers[id].width + 'px'
         });
-        $e.closest('table').find('tr td:nth-child(' + id + ')').css({
+        $e.closest('table').find('tr td:nth-child(' + ($e.index() + 1) + ')').css({
             'width': headers[id].width + 'px',
             'max-width': headers[id].width + 'px',
             'min-width': headers[id].width + 'px'
         });
+
+        $resizeBar.height($e.height());
     });
 
     $('.resize-border').draggable({
@@ -104,7 +106,7 @@ $(document).ready(function () {
                 'min-width': headers[id].width + 'px'
             });
 
-            $target.closest('table').find('tr td:nth-child(' + id + ')').css({
+            $target.closest('table').find('tr td:nth-child(' + ($target.closest('th').index() + 1) + ')').css({
                 'width': headers[id].width + 'px',
                 'max-width': headers[id].width + 'px',
                 'min-width': headers[id].width + 'px'

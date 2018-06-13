@@ -102,7 +102,7 @@ td {
 
 #left-table thead>tr,
 #right-table thead>tr {
-    width: calc(100% - 12px);
+    /* width: calc(100% - 12px); */
 }
 
 #left-table tbody,
