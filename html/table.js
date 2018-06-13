@@ -88,9 +88,17 @@ $(document).ready(function () {
             headers[id].width = headers[id].width + diff;
             headers[id].width = headers[id].width < 100 ? 100 : headers[id].width;
             var $target = $(e.target);
-            $target.closest('th').width(headers[id].width);
-            $target.closest('table').find('tr td:nth-child(' + id + ')').width(headers[id].width);
+            $target.closest('th').css({
+                'width': headers[id].width + 'px',
+                'max-width': headers[id].width + 'px',
+                'min-width': headers[id].width + 'px'
+            });
 
+            $target.closest('table').find('tr td:nth-child(' + id + ')').css({
+                'width': headers[id].width + 'px',
+                'max-width': headers[id].width + 'px',
+                'min-width': headers[id].width + 'px'
+            });
             // reinit vars
             $('.resize-vertical-bar').hide();
             $target.css('left', '0');
