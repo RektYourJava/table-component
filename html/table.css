@@ -124,8 +124,6 @@ td {
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 188px;
-    /* min-width: 100px; */
-    /* max-width: 250px; */
     background-color: white;
 }
 
@@ -139,8 +137,6 @@ td {
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 188px;
-    /* min-width: 100px; */
-    /* max-width: 250px; */
     background-color: white;
 }
 
@@ -152,18 +148,6 @@ td {
 #left-table tr:nth-child(2n)>td,
 #right-table tr:nth-child(2n)>td {
     background-color: #EEFFEE;
-}
-
-#right-table td:nth-last-child(1) {
-    width: 252px;
-    /* min-width: 100px; */
-    /* max-width: 252px; */
-}
-
-#left-table th:nth-last-child(1) {
-    width: 252px;
-    /* min-width: 100px; */
-    /* max-width: 252px; */
 }
 
 #left-table th,
@@ -204,6 +188,11 @@ td {
     top: 0px;
 }
 
+
+/**
+    MOZILLA
+*/
+
 @-moz-document url-prefix() {
     #left-table th {
         height: 51px !important;
@@ -224,7 +213,14 @@ td {
     #right-table thead span {
         float: left;
     }
+    #left-table,
+    #right-table {}
 }
+
+
+/**
+    INTERNET EXPLORER
+*/
 
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
@@ -237,6 +233,10 @@ td {
     #left-table tbody,
     #right-table tbody {
         overflow-x: hidden;
-        height: calc(100% - 45px);
+        height: calc(100% - 63px);
+    }
+    #left-table,
+    #right-table {
+        -ms-overflow-style: none;
     }
 }
