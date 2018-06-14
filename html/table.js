@@ -18,24 +18,7 @@ $(document).ready(function() {
         $('#' + oppositeSide + '-table tbody').scrollTop($(this).scrollTop());
     };
 
-    // SORTABLE
 
-    var idSortable = -1;
-    var trOpposite;
-    $("table tbody").sortable({
-        start: function(e, ui) {
-            var target = $(ui.item[0]);
-            idSortable = target.attr('data-position');
-            trOpposite = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + idSortable + ']');
-        },
-        update: function(e, ui) {
-            var $nextElement = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + $(ui.item[0].nextElementSibling).attr('data-position') + ']');
-            trOpposite.insertBefore($nextElement);
-            $(this).children().each(function(index) {
-                $(this).find('td').last().html(index + 1)
-            });
-        }
-    });
 
     $('#left-table tbody').on('scroll', scrollFunction);
     $('#right-table tbody').on('scroll', scrollFunction);
@@ -64,8 +47,38 @@ $(document).ready(function() {
         $('#right-table tbody').on('scroll', scrollFunction);
     });
 
+    // COLUMN SORTABLE
+    $('.column-sortable').on('mouseenter', function(e) {
+        var $target = $(e.target).is('span') || $(e.target).is('div') ? $(e.target).parent() : $(e.target);
+        $target.addClass('sortable');
+    });
+    $('.column-sortable').on('mouseleave', function(e) {
+        var $target = $(e.target).is('span') || $(e.target).is('div') ? $(e.target).parent() : $(e.target);
+        $target.removeClass('sortable');
+    });
 
-    // RESISABLE
+
+
+    // SORTABLE
+
+    var idSortable = -1;
+    var trOpposite;
+    $("table tbody").sortable({
+        start: function(e, ui) {
+            var target = $(ui.item[0]);
+            idSortable = target.attr('data-position');
+            trOpposite = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + idSortable + ']');
+        },
+        update: function(e, ui) {
+            var $nextElement = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + $(ui.item[0].nextElementSibling).attr('data-position') + ']');
+            trOpposite.insertBefore($nextElement);
+            $(this).children().each(function(index) {
+                $(this).find('td').last().html(index + 1)
+            });
+        }
+    });
+
+    // RESIZABLE
 
     var headers = {};
     var mouseStart = -1;

@@ -10,8 +10,14 @@ body {
     width: 100%;
 }
 
-table span {
+table tbody span {
     float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 123px;
+}
+
+table thead span {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 123px;
@@ -30,6 +36,11 @@ table span {
 #left-div,
 #right-div {
     height: 100%;
+}
+
+.sortable {
+    background-color: grey !important;
+    cursor: pointer;
 }
 
 table {
@@ -204,6 +215,14 @@ td {
     #right-table tbody {
         overflow-x: hidden;
         height: calc(100% - 52px);
+    }
+    #left-table thead span {
+        margin-top: 15px;
+        margin-left: 36%;
+        float: left;
+    }
+    #right-table thead span {
+        float: left;
     }
 }
 
