@@ -37,7 +37,9 @@ table {
 }
 
 td {
+    height: 30px;
     border: 1px solid #efefef;
+    border-top: 0;
 }
 
 #scroll-container {
@@ -60,7 +62,6 @@ td {
     overflow-x: auto;
     overflow-y: hidden;
     border: 1px solid rgba(148, 148, 148, .231);
-    ;
     background-color: #efefef;
 }
 
