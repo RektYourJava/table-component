@@ -1,12 +1,12 @@
-$(document).ready(function () {
-    var rowCount = 18;
-    $('#left-table tr').each(function (e) {
+$(document).ready(function() {
+    var rowCount = 20;
+    $('#left-table tr').each(function(e) {
         rowCount += $(this).height();
     });
     $('#scrollbar').css({ 'height': rowCount });
     var eventTriggerer;
 
-    var scrollFunction = function (event) {
+    var scrollFunction = function(event) {
         if (eventTriggerer && eventTriggerer !== "scroll-content") {
             eventTriggerer = "";
             return false;
@@ -18,24 +18,18 @@ $(document).ready(function () {
         $('#' + oppositeSide + '-table tbody').scrollTop($(this).scrollTop());
     };
 
-    // $(window).bind('mousewheel DOMMouseScroll', function(event) {
-    //     if (event.ctrlKey == true) {
-    //         event.preventDefault();
-    //     }
-    // });
-
     $('#left-table tbody').on('scroll', scrollFunction);
     $('#right-table tbody').on('scroll', scrollFunction);
 
-    $('#left-table tbody').on('mouseenter', function (e) {
+    $('#left-table tbody').on('mouseenter', function(e) {
         $('#left-table tbody').on('scroll', scrollFunction);
     });
 
-    $('#right-table tbody').on('mouseenter', function (e) {
+    $('#right-table tbody').on('mouseenter', function(e) {
         $('#right-table tbody').on('scroll', scrollFunction);
     });
 
-    $('#scroll-container').on('scroll', function (e) {
+    $('#scroll-container').on('scroll', function(e) {
         if (eventTriggerer && eventTriggerer !== "scrollbar") {
             eventTriggerer = "";
             return false;
@@ -58,8 +52,7 @@ $(document).ready(function () {
     var mouseStart = -1;
     var mouseEnd = -1;
     var id = -1;
-    $('.resize-border').closest('th').each(function (i, e) {
-        debugger;
+    $('.resize-border').closest('th').each(function(i, e) {
         var $e = $(e);
         var $resizeBar = $e.find('.resize-border');
         var id = parseInt($resizeBar.attr('data-id'), 10);
@@ -81,20 +74,18 @@ $(document).ready(function () {
     });
 
     $('.resize-border').draggable({
-        start: function (e) {
-            debugger;
+        start: function(e) {
             var target = $(e.target);
             id = target.attr('data-id');
             mouseStart = $(this).offset().left;
             $('.resize-vertical-bar').show();
         },
 
-        drag: function (e) {
+        drag: function(e) {
             $('.resize-vertical-bar').css('left', $(this).offset().left);
         },
 
-        stop: function (e) {
-            debugger;
+        stop: function(e) {
             mouseEnd = $(this).offset().left;
             var diff = mouseEnd - mouseStart;
             headers[id].width = headers[id].width + diff;
