@@ -14,13 +14,13 @@ table tbody span {
     float: left;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 123px;
+    max-width: 250px;
 }
 
 table thead span {
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 123px;
+    max-width: 250px;
 }
 
 #left-table ::-webkit-scrollbar,

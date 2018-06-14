@@ -1,34 +1,39 @@
 $(document).ready(function() {
+
+    // BUILD VERTICAL SCROLL
     var rowCount = 20;
     $('#left-table tr').each(function(e) {
         rowCount += $(this).height();
     });
     $('#scrollbar').css({ 'height': rowCount });
+
+    // SYNCHRONISATION SCROLLBAR
     var eventTriggerer;
 
-    var scrollFunction = function(event) {
-        if (eventTriggerer && eventTriggerer !== "scroll-content") {
+    var scrollTableFunction = function(event) {
+        if (eventTriggerer && eventTriggerer !== "scroll-table") {
             eventTriggerer = "";
             return false;
         }
         var oppositeSide = $(event.target).attr("data-opposite-side");
-        eventTriggerer = "scroll-content";
+        eventTriggerer = "scroll-table";
         $('#' + oppositeSide + '-table tbody').off('scroll');
         $('#scroll-container').scrollTop($(this).scrollTop());
         $('#' + oppositeSide + '-table tbody').scrollTop($(this).scrollTop());
     };
 
 
-
-    $('#left-table tbody').on('scroll', scrollFunction);
-    $('#right-table tbody').on('scroll', scrollFunction);
+    $('#left-table tbody').on('scroll', scrollTableFunction);
+    $('#right-table tbody').on('scroll', scrollTableFunction);
 
     $('#left-table tbody').on('mouseenter', function(e) {
-        $('#left-table tbody').on('scroll', scrollFunction);
+        $('#left-table tbody').on('scroll', scrollTableFunction);
+        $('#right-table tbody').off('scroll');
     });
 
     $('#right-table tbody').on('mouseenter', function(e) {
-        $('#right-table tbody').on('scroll', scrollFunction);
+        $('#right-table tbody').on('scroll', scrollTableFunction);
+        $('#left-table tbody').off('scroll');
     });
 
     $('#scroll-container').on('scroll', function(e) {
@@ -40,11 +45,11 @@ $(document).ready(function() {
 
         $('#left-table tbody').off('scroll');
         $('#left-table tbody').scrollTop($(this).scrollTop());
-        $('#left-table tbody').on('scroll', scrollFunction);
+        $('#left-table tbody').on('scroll', scrollTableFunction);
 
         $('#right-table tbody').off('scroll');
         $('#right-table tbody').scrollTop($(this).scrollTop());
-        $('#right-table tbody').on('scroll', scrollFunction);
+        $('#right-table tbody').on('scroll', scrollTableFunction);
     });
 
     // COLUMN SORTABLE
@@ -60,7 +65,6 @@ $(document).ready(function() {
 
 
     // SORTABLE
-
     var idSortable = -1;
     var trOpposite;
     $("table tbody").sortable({
@@ -79,7 +83,6 @@ $(document).ready(function() {
     });
 
     // RESIZABLE
-
     var headers = {};
     var mouseStart = -1;
     var mouseEnd = -1;
