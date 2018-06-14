@@ -1,5 +1,57 @@
 $(document).ready(function() {
 
+    //SIMULATE DATA
+    var columns = [];
+    var rows = [];
+    var nbColumn = 5;
+    var nbRows = 20;
+    // DATA COLUMNS
+    for (var i = 0; i < nbColumn; i++) {
+        var column = {
+            name: 'Column ' + (i + 1),
+            id: i + 1
+        }
+        columns.push(column);
+    };
+    // DATA ROWS
+    for (var i = 0; i < nbRows; i++) {
+        var cells = []
+        for (var j = 0; j < nbColumn; j++) {
+            var cell = {
+                name: 'Cell ' + j,
+                id: j
+            }
+            cells.push(cell);
+        };
+        var row = {
+            position: i,
+            cells: cells
+        }
+        rows.push(row);
+    };
+    debugger;
+
+    var buildTable = function(leftTable, rightTable, columns, rows, cells) {
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+
+        }
+    };
+
+    var buildColumns = function(columns, tables) {
+        var thead = '<thead>';
+        columns.forEach(element => {
+            var th = '<th class="column-sortable"><span>' + element.name + '</span><div data-id="' + element.id + '" class="resize-border"</div></th>';
+            thead = thead.concat(th);
+        });
+        thead = thead.concat('</thead>');
+        $('#left-table thead').append(thead);
+    };
+
+    buildColumns(columns);
+    //------------------------------------------------------------------
+
+
     // BUILD VERTICAL SCROLL
     var rowCount = 20;
     $('#left-table tr').each(function(e) {
