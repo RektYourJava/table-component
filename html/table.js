@@ -39,8 +39,8 @@ $(document).ready(function() {
 
     var buildColumns = function(columns, tables) {
         var thead = '<thead>';
-        columns.forEach(element => {
-            var th = '<th class="column-sortable"><span>' + element.name + '</span><div data-id="' + element.id + '" class="resize-border"</div></th>';
+        $.each(columns, function(key, value) {
+            var th = '<th class="column-sortable"><span>' + value.name + '</span><div data-id="' + value.id + '" class="resize-border"</div></th>';
             thead = thead.concat(th);
         });
         thead = thead.concat('</thead>');
@@ -48,6 +48,29 @@ $(document).ready(function() {
     };
 
     buildColumns(columns);
+    //------------------------------------------------------------------
+
+    //HOVER TD
+    $('td').on('mouseover', function(e) {
+        var $td = $(e.target);
+        var $tbody = $(e.target).closest('tbody');
+        var position = $(e.target).parent().attr('data-position');
+        var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
+        var $th = $td.closest('table').find('th').eq($td.index());
+        trOpposite.find('td').each(function(i, e) {
+            var $e = $(e);
+            $e.addClass('simulateHover');
+        });
+    });
+    $('td').on('mouseleave', function(e) {
+        var $tbody = $(e.target).closest('tbody');
+        var position = $(e.target).parent().attr('data-position');
+        var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
+        trOpposite.find('td').each(function(i, e) {
+            var $e = $(e);
+            $e.removeClass('simulateHover');
+        });
+    });
     //------------------------------------------------------------------
 
 
@@ -118,7 +141,7 @@ $(document).ready(function() {
     // SORTABLE
     var idSortable = -1;
     var trOpposite;
-    $("#left-table tbody").sortable({
+    $("table tbody").sortable({
         start: function(e, ui) {
             var target = $(ui.item[0]);
             idSortable = target.attr('data-position');

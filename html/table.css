@@ -19,6 +19,22 @@ table tbody span {
     max-width: 250px;
 }
 
+#left-table tr:hover td,
+#right-table tr:hover td {
+    background: #f2f2f2;
+}
+
+#left-table tr:hover td,
+#right-table tr:hover td {
+    background: #f2f2f2;
+}
+
+.simulateHover {
+    background-color: #f2f2f2 !important;
+}
+
+
+/* 
 td.has-nested-table {
     cursor: pointer;
     padding: 0;
@@ -39,7 +55,7 @@ td.has-nested-table>table>tbody>tr:last-child>td {
 
 td.has-nested-table td:only-child {
     border-bottom-width: 1px;
-}
+} */
 
 table thead span {
     overflow: hidden;
