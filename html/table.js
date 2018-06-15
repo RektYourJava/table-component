@@ -1,10 +1,11 @@
 $(document).ready(function() {
 
-    //SIMULATE DATA
+    //SIMULATE DATA -------------------------------------------------------------------
     var columns = [];
     var rows = [];
     var nbColumn = 5;
-    var nbRows = 20;
+    var nbRows = 50;
+
     // DATA COLUMNS
     for (var i = 0; i < nbColumn; i++) {
         var column = {
@@ -13,18 +14,19 @@ $(document).ready(function() {
         }
         columns.push(column);
     };
+
     // DATA ROWS
     for (var i = 0; i < nbRows; i++) {
         var cells = []
         for (var j = 0; j < nbColumn; j++) {
             var cell = {
-                name: 'Cell ' + j,
-                id: j
+                name: '[Row ' + (i + 1) + '| Col ' + (j + 1) + ']',
+                id: j + 1
             }
             cells.push(cell);
         };
         var row = {
-            position: i,
+            position: i + 1,
             cells: cells
         }
         rows.push(row);
@@ -47,6 +49,22 @@ $(document).ready(function() {
         $('#left-table thead').append(thead);
     };
 
+    var buildRows = function(rows, table) {
+        var tbody = '';
+        $.each(rows, function(key, value) {
+            var tr = '<tr data-position="' + value.position + '">';
+            $.each(value.cells, function(key, value) {
+                var td = '<td data-column="' + value.id + '">' + value.name + '</td>';
+                tr = tr.concat(td);
+            });
+            tr = tr.concat('</tr>');
+            tbody = tbody.concat(tr);
+        });
+        $('#' + table + ' tbody').append(tbody);
+    };
+
+    buildRows(rows, 'left-table');
+    buildRows(rows, 'right-table');
     buildColumns(columns);
     //------------------------------------------------------------------
 
