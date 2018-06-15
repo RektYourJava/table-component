@@ -167,11 +167,6 @@ td {
     background-color: #efefef;
 }
 
-#left-table tr:nth-child(2n)>td,
-#right-table tr:nth-child(2n)>td {
-    background-color: #EEFFEE;
-}
-
 #left-table th,
 #right-table th {
     border-left: 1px solid rgba(148, 148, 148, .231);
