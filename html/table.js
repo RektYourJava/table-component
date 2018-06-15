@@ -118,8 +118,7 @@ $(document).ready(function() {
     // SORTABLE
     var idSortable = -1;
     var trOpposite;
-    $("table tbody").sortable({
-
+    $("#left-table tbody").sortable({
         start: function(e, ui) {
             var target = $(ui.item[0]);
             idSortable = target.attr('data-position');

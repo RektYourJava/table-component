@@ -1,9 +1,11 @@
-html {
-    font-family: arial;
+@font-face {
+    font-family: "roboto";
+    src: url('../Roboto/Roboto-Regular.ttf');
 }
 
 html,
 body {
+    font-family: "roboto";
     height: 100%;
     margin: 0;
     overflow: hidden;
@@ -150,7 +152,7 @@ td {
 }
 
 #left-table th {
-    height: 39px;
+    height: 41px;
 }
 
 #left-table th,
@@ -164,7 +166,7 @@ td {
 
 #left-table th,
 #right-table th {
-    background-color: #efefef;
+    background-color: #f1f1f1;
 }
 
 #left-table th,
