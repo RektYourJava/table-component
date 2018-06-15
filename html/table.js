@@ -29,7 +29,6 @@ $(document).ready(function() {
         }
         rows.push(row);
     };
-    debugger;
 
     var buildTable = function(leftTable, rightTable, columns, rows, cells) {
         for (let index = 0; index < array.length; index++) {
@@ -120,6 +119,7 @@ $(document).ready(function() {
     var idSortable = -1;
     var trOpposite;
     $("table tbody").sortable({
+
         start: function(e, ui) {
             var target = $(ui.item[0]);
             idSortable = target.attr('data-position');
@@ -146,12 +146,18 @@ $(document).ready(function() {
         headers[id] = {
             width: 250
         };
-        $e.css({
+        $e.closest('table').find('tr td:nth-child(' + ($e.index() + 1) + ')').css({
             'width': headers[id].width + 'px',
             'max-width': headers[id].width + 'px',
             'min-width': headers[id].width + 'px'
         });
-        $e.closest('table').find('tr td:nth-child(' + ($e.index() + 1) + ')').css({
+        headers[1] = {
+            width: 251
+        };
+        headers[6] = {
+            width: 251
+        };
+        $e.css({
             'width': headers[id].width + 'px',
             'max-width': headers[id].width + 'px',
             'min-width': headers[id].width + 'px'

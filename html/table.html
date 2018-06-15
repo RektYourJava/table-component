@@ -13,16 +13,31 @@
     <div class="containers">
         <div id="left-div">
             <table id="left-table">
-                <thead></thead>
+                <thead>
+                </thead>
                 <tbody data-opposite-side="right">
                     <tr data-position="1">
                         <td>
-                            <span>LONG TEXT LONG TEXTLONG TEXT LONG TEXTLONG TEXT LONG TEXTLONG TEXT LONG TEXT</span>
+                            <span>Processus 1</span>
                         </td>
-                        <td>Row 1</td>
-                        <td>Row 1</td>
-                        <td>Row 1</td>
-                        <td>Row 1</td>
+                        <td colspan="4" class="has-nested-table">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Main Category 1</td>
+                                        <td>Sub Category 1</td>
+                                        <td>Sub Category 1</td>
+                                        <td>Product Name 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Main Category 1</td>
+                                        <td>Sub Category 1</td>
+                                        <td>Sub Category 1</td>
+                                        <td>Product Name 1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
                     </tr>
                     <tr data-position="2">
                         <td>Row 1</td>
@@ -367,7 +382,7 @@
             <table id="right-table">
                 <thead>
                     <TR>
-                        <TH COLSPAN=5>Titre 1</TH>
+                        <TH COLSPAN=5 class="col-1">Titre 1</TH>
                     </TR>
                     <tr>
                         <th><span>Column 1</span>

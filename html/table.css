@@ -17,6 +17,28 @@ table tbody span {
     max-width: 250px;
 }
 
+td.has-nested-table {
+    cursor: pointer;
+    padding: 0;
+}
+
+td.has-nested-table td {
+    border-top: 0;
+    border-right: 0;
+}
+
+td.has-nested-table td:first-child {
+    border-left: 0;
+}
+
+td.has-nested-table>table>tbody>tr:last-child>td {
+    border-bottom: 0;
+}
+
+td.has-nested-table td:only-child {
+    border-bottom-width: 1px;
+}
+
 table thead span {
     overflow: hidden;
     text-overflow: ellipsis;
