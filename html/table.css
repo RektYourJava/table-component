@@ -60,6 +60,8 @@ td.has-nested-table td:only-child {
 
 table thead span {
     overflow: hidden;
+    text-transform: uppercase;
+    line-height: 2.4;
     text-overflow: ellipsis;
     max-width: 250px;
 }
@@ -169,7 +171,7 @@ td {
 }
 
 #left-table th {
-    height: 41px;
+    height: 79px;
 }
 
 #left-table th,
