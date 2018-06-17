@@ -42,7 +42,7 @@ $(document).ready(function() {
     var buildColumns = function(columns, tables) {
         var thead = '<thead>';
         $.each(columns, function(key, value) {
-            var th = '<th class="column-sortable"><span>' + value.name + '</span><div data-id="' + value.id + '" class="resize-border"</div></th>';
+            var th = '<th class="column-sortable" data-column="' + value.id + '"><span>' + value.name + '</span><div data-id="' + value.id + '" class="resize-border"</div></th>';
             thead = thead.concat(th);
         });
         thead = thead.concat('</thead>');
@@ -71,23 +71,30 @@ $(document).ready(function() {
     //HOVER TD
     $('td').on('mouseover', function(e) {
         var $td = $(e.target);
+        var $table = $(e.target).closest('table');
         var $tbody = $(e.target).closest('tbody');
         var position = $(e.target).parent().attr('data-position');
+        var column = $(e.target).attr('data-column');
         var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
-        var $th = $td.closest('table').find('th').eq($td.index());
+        var $th = $('#' + $table.attr('id') + ' thead th[data-column=' + column + ']');
         trOpposite.find('td').each(function(i, e) {
             var $e = $(e);
             $e.addClass('simulateHover');
         });
+        $th.addClass('simulateHover');
     });
     $('td').on('mouseleave', function(e) {
         var $tbody = $(e.target).closest('tbody');
         var position = $(e.target).parent().attr('data-position');
+        var column = $(e.target).attr('data-column');
+        var $table = $(e.target).closest('table');
         var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
+        var $th = $('#' + $table.attr('id') + ' thead th[data-column=' + column + ']');
         trOpposite.find('td').each(function(i, e) {
             var $e = $(e);
             $e.removeClass('simulateHover');
         });
+        $th.removeClass('simulateHover');
     });
     //------------------------------------------------------------------
 
