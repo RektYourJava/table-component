@@ -81,6 +81,10 @@ $(document).ready(function() {
             var $e = $(e);
             $e.addClass('simulateHover');
         });
+        $('#' + $table.attr('id') + ' td[data-column=' + column + ']').each(function(i, e) {
+            var $e = $(e);
+            $e.addClass('simulateHover');
+        });
         $th.addClass('simulateHover');
     });
     $('td').on('mouseleave', function(e) {
@@ -91,6 +95,10 @@ $(document).ready(function() {
         var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
         var $th = $('#' + $table.attr('id') + ' thead th[data-column=' + column + ']');
         trOpposite.find('td').each(function(i, e) {
+            var $e = $(e);
+            $e.removeClass('simulateHover');
+        });
+        $('#' + $table.attr('id') + ' td[data-column=' + column + ']').each(function(i, e) {
             var $e = $(e);
             $e.removeClass('simulateHover');
         });
@@ -216,12 +224,17 @@ $(document).ready(function() {
     $('.resize-border').draggable({
         start: function(e) {
             var target = $(e.target);
+            var $th = target.parent();
             id = target.attr('data-id');
             mouseStart = $(this).offset().left;
+            $th.removeClass('sortable');
             $('.resize-vertical-bar').show();
         },
 
         drag: function(e) {
+            var target = $(e.target);
+            var $th = target.parent();
+            $th.removeClass('sortable');
             $('.resize-vertical-bar').css('left', $(this).offset().left);
         },
 

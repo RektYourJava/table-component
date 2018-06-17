@@ -1,11 +1,11 @@
 @font-face {
-    font-family: "roboto";
-    src: url('../Roboto/Roboto-Regular.ttf');
+    font-family: "montserrat";
+    src: url('../Montserrat-Medium.otf');
 }
 
 html,
 body {
-    font-family: "roboto";
+    font-family: "montserrat";
     height: 100%;
     margin: 0;
     overflow: hidden;
@@ -17,6 +17,7 @@ table tbody span {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 250px;
+    font-family: "montserrat";
 }
 
 #left-table tr:hover td,
@@ -88,7 +89,7 @@ table {
 }
 
 td {
-    height: 30px;
+    height: 50px;
     border: 1px solid #efefef;
     border-top: 0;
 }
