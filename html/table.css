@@ -59,6 +59,7 @@ td.has-nested-table td:only-child {
 } */
 
 table thead span {
+    font-family: "montserrat";
     overflow: hidden;
     text-transform: uppercase;
     line-height: 2.4;
@@ -158,7 +159,7 @@ td {
 #left-table tbody,
 #right-table tbody {
     overflow-x: hidden;
-    height: calc(100% - 40px);
+    height: calc(100% - 80px);
 }
 
 #left-table td,
@@ -233,7 +234,7 @@ td {
 
 @-moz-document url-prefix() {
     #left-table th {
-        height: 51px !important;
+        height: 80px !important;
     }
     #right-table th {
         height: 24px !important;
@@ -241,14 +242,16 @@ td {
     #left-table tbody,
     #right-table tbody {
         overflow-x: hidden;
-        height: calc(100% - 52px);
+        height: calc(100% - 80px);
     }
     #left-table thead span {
         margin-top: 15px;
         margin-left: 36%;
+        font-family: "montserrat";
         float: left;
     }
     #right-table thead span {
+        font-family: "montserrat";
         float: left;
     }
 }
@@ -261,7 +264,7 @@ td {
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
     #left-table th {
-        height: 43px !important;
+        height: 80px !important;
     }
     #right-table th {
         height: 20px !important;
@@ -269,7 +272,7 @@ td {
     #left-table tbody,
     #right-table tbody {
         overflow-x: hidden;
-        height: calc(100% - 63px);
+        height: calc(100% - 100px);
     }
     #left-table,
     #right-table {
