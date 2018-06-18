@@ -68,6 +68,19 @@ $(document).ready(function() {
     buildColumns(columns);
     //------------------------------------------------------------------
 
+    // //EDIT TD
+    // $('td').on('click', function(e) {
+    //     debugger;
+    //     var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
+    //     var $span = $td.find('span');
+    //     var content = $span.text();
+    //     var input = '<input class="input_edit" value="' + content + '">';
+    //     $span.remove();
+    //     $td.append(input);
+    // });
+    //------------------------------------------------------------------
+
+
     //HOVER TD
     $('td').on('mouseover', function(e) {
         var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
@@ -187,9 +200,6 @@ $(document).ready(function() {
         update: function(e, ui) {
             var $nextElement = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + $(ui.item[0].nextElementSibling).attr('data-position') + ']');
             trOpposite.insertBefore($nextElement);
-            $(this).children().each(function(index) {
-                $(this).find('td').last().html(index + 1)
-            });
         }
     });
 

@@ -1,6 +1,6 @@
 @font-face {
     font-family: "montserrat";
-    src: url('../Montserrat-Medium.otf');
+    src: url('../fonts/Montserrat-Medium.otf');
 }
 
 html,
@@ -20,6 +20,10 @@ table tbody span {
     font-family: "montserrat";
 }
 
+#table-panel {
+    height: 5%;
+}
+
 #left-table tr:hover td,
 #right-table tr:hover td {
     background: #a5a5a500;
@@ -32,6 +36,13 @@ table tbody span {
 
 .simulateHover {
     background-color: #a5a5a500 !important;
+}
+
+.input_edit {
+    height: 44px;
+    width: 246px;
+    border: 2px solid black;
+    font-family: "montserrat";
 }
 
 
@@ -73,13 +84,8 @@ table thead span {
 }
 
 .containers {
-    width: 100%;
-}
-
-.containers,
-#left-div,
-#right-div {
     height: 100%;
+    width: 100%;
 }
 
 .sortable {
@@ -97,21 +103,26 @@ td {
     border-top: 0;
 }
 
+#table-panel {
+    background-color: grey;
+}
+
+#scroll-container,
+#left-div,
+#right-div {
+    height: 95%;
+}
+
 #scroll-container {
     width: 1%;
     overflow: scroll;
-    height: 100%;
     float: right;
     margin: 0 auto;
     padding-top: 17px;
 }
 
-#scrollbar {
-    height: 800px;
-}
-
 #left-div {
-    height: 100%;
+    height: 95%;
     float: left;
     width: 50%;
     overflow-x: auto;
@@ -121,7 +132,7 @@ td {
 }
 
 #right-div {
-    height: 100%;
+    height: 95%;
     display: inline-block;
     width: 48%;
     overflow-x: auto;
