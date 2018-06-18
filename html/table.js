@@ -4,7 +4,7 @@ $(document).ready(function() {
     var columns = [];
     var rows = [];
     var nbColumn = 5;
-    var nbRows = 50;
+    var nbRows = 26;
 
     // DATA COLUMNS
     for (var i = 0; i < nbColumn; i++) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
         var cells = []
         for (var j = 0; j < nbColumn; j++) {
             var cell = {
-                name: '[Row ' + (i + 1) + '| Col ' + (j + 1) + ']',
+                name: 'Cellule ' + i,
                 id: j + 1
             }
             cells.push(cell);
@@ -42,7 +42,7 @@ $(document).ready(function() {
     var buildColumns = function(columns, tables) {
         var thead = '<thead>';
         $.each(columns, function(key, value) {
-            var th = '<th class="column-sortable" data-column="' + value.id + '"><span>' + value.name + '</span><div data-id="' + value.id + '" class="resize-border"</div></th>';
+            var th = '<th class="column-sortable" data-sort="up" data-column="' + value.id + '"><span>' + value.name + '</span><div data-id="' + value.id + '" class="resize-border"</div></th>';
             thead = thead.concat(th);
         });
         thead = thead.concat('</thead>');
@@ -66,6 +66,7 @@ $(document).ready(function() {
     buildRows(rows, 'left-table');
     buildRows(rows, 'right-table');
     buildColumns(columns);
+
     //------------------------------------------------------------------
 
     // //EDIT TD
@@ -273,5 +274,65 @@ $(document).ready(function() {
             $target.css('left', '0');
             $target.css('top', '0');
         }
-    })
+    });
+
+    // SORT COLUMN -------------------------------------------------------------------
+
+    $('th').on('click', function(e) {
+        var $table = $(e.target).closest('table');
+        sortable($table, $(e.target).attr('data-sort'), $table.find('tbody').attr('data-opposite-side'));
+        if ($(e.target).attr('data-sort')) {
+            $(e.target).attr('data-sort', $(e.target).attr('data-sort') === 'up' ? 'down' : 'up');
+        }
+    });
+
+    var sortable = function(table, move, oppositeSide) {
+        var rows = table.find(' tbody  tr').get();
+        var $oppositeTable = $('#' + oppositeSide + '-table');
+        rows.sort(function(a, b) {
+            var id = parseInt($(a).children('td').attr('data-column'));
+            var A = $(a).children('td').eq(id).text().toUpperCase();
+            var B = $(b).children('td').eq(id).text().toUpperCase();
+            if ($.isNumeric(A) && $.isNumeric(B)) {
+                if (move === 'down') {
+                    if (parseInt(A, 10) < parseInt(B, 10)) {
+                        return -1;
+                    }
+                    if (parseInt(A, 10) > parseInt(B, 10)) {
+                        return 1;
+                    }
+                } else {
+                    if (parseInt(A, 10) < parseInt(B, 10)) {
+                        return 1;
+                    }
+                    if (parseInt(A, 10) > parseInt(B, 10)) {
+                        return -1;
+                    }
+                }
+                return 0;
+            } else {
+                if (move === 'down') {
+                    if (A < B) {
+                        return -1;
+                    }
+                    if (A > B) {
+                        return 1;
+                    }
+                } else {
+                    if (A < B) {
+                        return 1;
+                    }
+                    if (A > B) {
+                        return -1;
+                    }
+                }
+            }
+            return 0;
+        });
+        $.each(rows, function(index, row) {
+            table.children('tbody').append(row);
+            $oppositeTable.children('tbody').append($('#' + oppositeSide + '-table tr[data-position=' + $(row).attr('data-position') + ']'));
+        });
+    };
+    // ----------------------------------------------------------------------------------------
 });

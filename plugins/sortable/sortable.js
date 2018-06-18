@@ -1,11 +1,11 @@
-define(['./tools'], function (tools) {
+define(['./tools'], function(tools) {
     var current = {
 
         /**
          * Init sort row
          * @param {any} tableId 
          */
-        initSortRow: function (tableId) {
+        initSortRow: function(tableId) {
             var $th = $('#' + tableId + ' th').get();
             for (var index = 0; index < ($th.length); index++) {
                 var element = $th[index];
@@ -27,8 +27,8 @@ define(['./tools'], function (tools) {
          * 
          * @param {any} element 
          */
-        addEventOnElement: function (element) {
-            $(element).mouseenter(function (e) {
+        addEventOnElement: function(element) {
+            $(element).mouseenter(function(e) {
                 var attrSortable = $(e.target).closest('th').attr('data-sortable');
                 var $th;
                 if ($(e.target).is('span')) {
@@ -42,7 +42,7 @@ define(['./tools'], function (tools) {
                     $th.find('.fa-long-arrow-down').removeClass('hidden');
                 }
             });
-            $(element).mouseleave(function (e) {
+            $(element).mouseleave(function(e) {
                 if (!$(e.target).closest('th').hasClass('rowSortActive')) {
                     $(e.target).closest('th').find('.fa-long-arrow-up').addClass('hidden');
                     $(e.target).closest('th').find('.fa-long-arrow-down').addClass('hidden');
@@ -55,8 +55,8 @@ define(['./tools'], function (tools) {
          * 
          * @param {any} tableId 
          */
-        loadEvents: function (tableId) {
-            $('#left-' + tableId + ' .rowSortable').on('click', function (e) {
+        loadEvents: function(tableId) {
+            $('#left-' + tableId + ' .rowSortable').on('click', function(e) {
                 if ($(e.target).hasClass('btn') || $(e.target).parent().hasClass('btn') || $(e.target).hasClass('fa-calendar') || $(e.target).hasClass('resourceFilterInput') || $(e.target).hasClass('col-checkbox') || $(e.target).hasClass('cfilter-input')) {
                     return;
                 }
@@ -99,9 +99,9 @@ define(['./tools'], function (tools) {
          * @param {any} id 
          * @param {any} move 
          */
-        sortTable: function (tableId, id, move) {
+        sortTable: function(tableId, id, move) {
             var rows = $('#left-' + tableId + ' tbody  tr').get();
-            rows.sort(function (a, b) {
+            rows.sort(function(a, b) {
                 var A = $(a).children('td').eq(id).text().toUpperCase();
                 var B = $(b).children('td').eq(id).text().toUpperCase();
                 if (tools.isFloat(A) && tools.isFloat(B)) {
@@ -140,7 +140,7 @@ define(['./tools'], function (tools) {
                 }
                 return 0;
             });
-            $.each(rows, function (index, row) {
+            $.each(rows, function(index, row) {
                 $('#left-' + tableId).children('tbody').append(row);
                 $('#right-' + tableId).children('tbody').append($('#right-' + tableId + ' #' + $(row).attr('id')));
             });
