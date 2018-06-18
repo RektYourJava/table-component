@@ -54,7 +54,7 @@ $(document).ready(function() {
         $.each(rows, function(key, value) {
             var tr = '<tr data-position="' + value.position + '">';
             $.each(value.cells, function(key, value) {
-                var td = '<td data-column="' + value.id + '">' + value.name + '</td>';
+                var td = '<td data-column="' + value.id + '"><span>' + value.name + '</span></td>';
                 tr = tr.concat(td);
             });
             tr = tr.concat('</tr>');
@@ -70,11 +70,11 @@ $(document).ready(function() {
 
     //HOVER TD
     $('td').on('mouseover', function(e) {
-        var $td = $(e.target);
-        var $table = $(e.target).closest('table');
-        var $tbody = $(e.target).closest('tbody');
-        var position = $(e.target).parent().attr('data-position');
-        var column = $(e.target).attr('data-column');
+        var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
+        var $table = $td.closest('table');
+        var $tbody = $td.closest('tbody');
+        var position = $td.parent().attr('data-position');
+        var column = $td.attr('data-column');
         var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
         var $th = $('#' + $table.attr('id') + ' thead th[data-column=' + column + ']');
         trOpposite.find('td').each(function(i, e) {
@@ -82,16 +82,20 @@ $(document).ready(function() {
             $e.addClass('simulateHover');
         });
         $('#' + $table.attr('id') + ' td[data-column=' + column + ']').each(function(i, e) {
+            if ($(e).is("span")) {
+                console.log("span");
+            }
             var $e = $(e);
             $e.addClass('simulateHover');
         });
         $th.addClass('simulateHover');
     });
     $('td').on('mouseleave', function(e) {
-        var $tbody = $(e.target).closest('tbody');
-        var position = $(e.target).parent().attr('data-position');
-        var column = $(e.target).attr('data-column');
-        var $table = $(e.target).closest('table');
+        var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
+        var $tbody = $td.closest('tbody');
+        var position = $td.parent().attr('data-position');
+        var column = $td.attr('data-column');
+        var $table = $td.closest('table');
         var trOpposite = $('#' + $tbody.attr('data-opposite-side') + '-table tr[data-position=' + position + ']');
         var $th = $('#' + $table.attr('id') + ' thead th[data-column=' + column + ']');
         trOpposite.find('td').each(function(i, e) {

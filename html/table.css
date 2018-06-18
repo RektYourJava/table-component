@@ -83,7 +83,7 @@ table thead span {
 }
 
 .sortable {
-    background-color: grey !important;
+    background-color: #a5a5a500 !important;
     cursor: pointer;
 }
 
