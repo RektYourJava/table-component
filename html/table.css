@@ -192,6 +192,20 @@ td {
     border-left: 0;
 }
 
+#dropdown-button {
+    font-family: "montserrat";
+    line-height: 0.5 !important;
+    font-size: 15px !important;
+    height: 100%;
+    margin-bottom: 1%;
+    border-radius: 0px;
+}
+
+.dropdown-menu {
+    margin: 0px 0 0 !important;
+    top: 3% !important;
+}
+
 
 /**
   Resize

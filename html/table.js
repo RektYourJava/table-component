@@ -67,9 +67,7 @@ $(document).ready(function() {
     buildRows(rows, 'right-table');
     buildColumns(columns);
 
-    //------------------------------------------------------------------
-
-    // //EDIT TD
+    //-------------------------------EDIT TD-----------------------------------
     // $('td').on('click', function(e) {
     //     debugger;
     //     var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
