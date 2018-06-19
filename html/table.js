@@ -4,7 +4,7 @@ $(document).ready(function() {
     var columns = [];
     var rows = [];
     var nbColumn = 5;
-    var nbRows = 26;
+    var nbRows = 50;
 
     // DATA COLUMNS
     for (var i = 0; i < nbColumn; i++) {
