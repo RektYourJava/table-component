@@ -3,7 +3,7 @@ $(document).ready(function() {
     //SIMULATE DATA -------------------------------------------------------------------
     var columns = [];
     var rows = [];
-    var nbColumn = 5;
+    var nbColumn = 28;
     var nbRows = 50;
 
     // DATA COLUMNS
@@ -20,7 +20,7 @@ $(document).ready(function() {
         var cells = []
         for (var j = 0; j < nbColumn; j++) {
             var cell = {
-                name: 'Cellule ' + i,
+                name: '',
                 id: j + 1
             }
             cells.push(cell);
@@ -79,6 +79,36 @@ $(document).ready(function() {
     // });
     //------------------------------------------------------------------
 
+    $('th.head_column_criteria').on('mouseover', function(e) {
+        var $th = $(e.target).closest('th');
+        var $table = $th.closest('table');
+        var column = $th.attr('data-column');
+        $('#' + $table.attr('id') + ' td[data-column=' + column + ']').each(function(i, e) {
+            var $e = $(e);
+            $e.addClass('over_selectable');
+        });
+        $th.addClass('over_selectable');
+    });
+    $('th.head_column_criteria').on('mouseleave', function(e) {
+        var $th = $(e.target).closest('th');
+        var $table = $th.closest('table');
+        var column = $th.attr('data-column');
+        $('#' + $table.attr('id') + ' td[data-column=' + column + ']').each(function(i, e) {
+            var $e = $(e);
+            $e.removeClass('over_selectable');
+        });
+        $th.removeClass('over_selectable');
+    });
+    $('th.head_column_criteria').on('click', function(e) {
+        var $th = $(e.target).closest('th');
+        var $table = $th.closest('table');
+        var column = $th.attr('data-column');
+        if ($th.hasClass('filter_criteria_selectable')) {
+            $th.removeClass('filter_criteria_selectable');
+        } else {
+            $th.addClass('filter_criteria_selectable');
+        }
+    });
 
     //HOVER TD
     $('td').on('mouseover', function(e) {
@@ -176,14 +206,14 @@ $(document).ready(function() {
     });
 
     // COLUMN SORTABLE
-    $('.column-sortable').on('mouseenter', function(e) {
-        var $target = $(e.target).is('span') || $(e.target).is('div') ? $(e.target).parent() : $(e.target);
-        $target.addClass('sortable');
-    });
-    $('.column-sortable').on('mouseleave', function(e) {
-        var $target = $(e.target).is('span') || $(e.target).is('div') ? $(e.target).parent() : $(e.target);
-        $target.removeClass('sortable');
-    });
+    // $('.column-sortable').on('mouseenter', function(e) {
+    //     var $target = $(e.target).is('span') || $(e.target).is('div') ? $(e.target).parent() : $(e.target);
+    //     $target.addClass('sortable');
+    // });
+    // $('.column-sortable').on('mouseleave', function(e) {
+    //     var $target = $(e.target).is('span') || $(e.target).is('div') ? $(e.target).parent() : $(e.target);
+    //     $target.removeClass('sortable');
+    // });
 
 
 
@@ -212,19 +242,14 @@ $(document).ready(function() {
         var $resizeBar = $e.find('.resize-border');
         var id = parseInt($resizeBar.attr('data-id'), 10);
         headers[id] = {
-            width: 250
+            width: 100
         };
         $e.closest('table').find('tr td:nth-child(' + ($e.index() + 1) + ')').css({
             'width': headers[id].width + 'px',
             'max-width': headers[id].width + 'px',
             'min-width': headers[id].width + 'px'
         });
-        headers[1] = {
-            width: 251
-        };
-        headers[6] = {
-            width: 251
-        };
+
         $e.css({
             'width': headers[id].width + 'px',
             'max-width': headers[id].width + 'px',
@@ -276,13 +301,13 @@ $(document).ready(function() {
 
     // SORT COLUMN -------------------------------------------------------------------
 
-    $('th').on('click', function(e) {
-        var $table = $(e.target).closest('table');
-        sortable($table, $(e.target).attr('data-sort'), $table.find('tbody').attr('data-opposite-side'));
-        if ($(e.target).attr('data-sort')) {
-            $(e.target).attr('data-sort', $(e.target).attr('data-sort') === 'up' ? 'down' : 'up');
-        }
-    });
+    // $('th').on('click', function(e) {
+    //     var $table = $(e.target).closest('table');
+    //     sortable($table, $(e.target).attr('data-sort'), $table.find('tbody').attr('data-opposite-side'));
+    //     if ($(e.target).attr('data-sort')) {
+    //         $(e.target).attr('data-sort', $(e.target).attr('data-sort') === 'up' ? 'down' : 'up');
+    //     }
+    // });
 
     var sortable = function(table, move, oppositeSide) {
         var rows = table.find(' tbody  tr').get();

@@ -1,0 +1,13 @@
+th.rotate {
+    height: 62px;
+    white-space: nowrap;
+}
+
+th.rotate>div {
+    transform: translate(0px, 17px) rotate(270deg);
+    width: 24px;
+}
+
+th.rotate>div>span {
+    padding: 0px 0px;
+}

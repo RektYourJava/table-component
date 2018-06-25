@@ -1,0 +1,193 @@
+#left-table tr:hover td,
+#right-table tr:hover td {
+    background: #a5a5a500;
+}
+
+table tbody span {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    font-family: "montserrat";
+}
+
+table thead span {
+    font-family: "montserrat";
+    overflow: hidden;
+    text-transform: uppercase;
+    line-height: 2.8;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+#left-table thead span {
+    font-size: 15px;
+}
+
+#right-table thead span {
+    font-size: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    height: 25px;
+    border: 1px solid #efefef;
+    border-top: 0;
+}
+
+#left-table tr:hover td,
+#right-table tr:hover td {
+    background: #a5a5a500;
+}
+
+#left-table thead span {
+    line-height: 5;
+}
+
+#left-table ::-webkit-scrollbar,
+#right-table ::-webkit-scrollbar {
+    display: none;
+}
+
+#left-table {
+    height: 100%;
+    background-color: transparent;
+    display: inline-block;
+}
+
+#right-table {
+    height: 100%;
+    background-color: transparent;
+    display: inline-block;
+}
+
+#left-table thead,
+#left-table tbody,
+#right-table thead,
+#right-table tbody {
+    display: block;
+}
+
+#left-table thead,
+#right-table thead {
+    border-bottom-width: 1px !important;
+    background-color: rgba(148, 148, 148, .231);
+    text-align: center;
+}
+
+#left-table tbody,
+#right-table tbody {
+    overflow-x: hidden;
+    height: calc(100% - 90px);
+}
+
+#left-table td,
+#right-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: white;
+}
+
+#left-table td {
+    width: 188px;
+}
+
+#right-table td {
+    border-left: 0;
+    padding-right: 24px;
+    width: 24px;
+}
+
+#left-table th,
+#right-table th {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: white;
+}
+
+#left-table th {
+    height: 90px;
+    width: 188px;
+}
+
+#right-table th.rotate {
+    width: 24px;
+}
+
+#left-table th,
+#right-table th {
+    background-color: #f3f3f3;
+}
+
+#left-table th,
+#right-table th {
+    border-left: 1px solid rgba(148, 148, 148, .231);
+    border-bottom: 1px solid rgba(148, 148, 148, .231);
+}
+
+#left-table th:first-child,
+#right-table th:first-child {
+    border-left: 0;
+}
+
+
+/**
+    MOZILLA
+*/
+
+@-moz-document url-prefix() {
+    table thead span {
+        line-height: 3;
+    }
+    #left-table th {
+        height: 80px !important;
+    }
+    #right-table th {
+        height: 24px !important;
+    }
+    #left-table tbody,
+    #right-table tbody {
+        overflow-x: hidden;
+        height: calc(100% - 80px);
+    }
+    #left-table thead span {
+        margin-top: 15px;
+        margin-left: 36%;
+        font-family: "montserrat";
+        float: left;
+    }
+    #right-table thead span {
+        font-family: "montserrat";
+        float: left;
+    }
+}
+
+
+/**
+    INTERNET EXPLORER
+*/
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+    #left-table th {
+        height: 80px !important;
+    }
+    #right-table th {
+        height: 20px !important;
+    }
+    #left-table tbody,
+    #right-table tbody {
+        overflow-x: hidden;
+        height: calc(100% - 100px);
+    }
+    #left-table,
+    #right-table {
+        -ms-overflow-style: none;
+    }
+}
