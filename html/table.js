@@ -89,6 +89,12 @@ $(document).ready(function() {
 
     var buildListColumns = function() {
         var columns = $('th:not(.head_column_criteria):not(.head_column_criteria_parent)');
+        columns.each(function(i, e) {
+            debugger;
+            var $e = $(e);
+            var text = $e.text();
+            var $li = '<li>' + text + '</li>';
+        });
     };
 
     //
@@ -254,7 +260,7 @@ $(document).ready(function() {
         var $resizeBar = $e.find('.resize-border');
         var id = parseInt($resizeBar.attr('data-id'), 10);
         headers[id] = {
-            width: 100
+            width: 150
         };
         $e.closest('table').find('tr td:nth-child(' + ($e.index() + 1) + ')').css({
             'width': headers[id].width + 'px',
