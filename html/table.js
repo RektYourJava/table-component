@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 
     // BUILD VERTICAL SCROLL
-    var rowCount = 20;
+    var rowCount = -15;
     $('#left-table tr').each(function(e) {
         rowCount += $(this).height();
     });
@@ -218,19 +218,19 @@ $(document).ready(function() {
 
 
     // SORTABLE
-    var idSortable = -1;
-    var trOpposite;
-    $("table tbody").sortable({
-        start: function(e, ui) {
-            var target = $(ui.item[0]);
-            idSortable = target.attr('data-position');
-            trOpposite = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + idSortable + ']');
-        },
-        update: function(e, ui) {
-            var $nextElement = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + $(ui.item[0].nextElementSibling).attr('data-position') + ']');
-            trOpposite.insertBefore($nextElement);
-        }
-    });
+    // var idSortable = -1;
+    // var trOpposite;
+    // $("table tbody").sortable({
+    //     start: function(e, ui) {
+    //         var target = $(ui.item[0]);
+    //         idSortable = target.attr('data-position');
+    //         trOpposite = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + idSortable + ']');
+    //     },
+    //     update: function(e, ui) {
+    //         var $nextElement = $('#' + $(e.target).attr('data-opposite-side') + '-table tr[data-position=' + $(ui.item[0].nextElementSibling).attr('data-position') + ']');
+    //         trOpposite.insertBefore($nextElement);
+    //     }
+    // });
 
     // RESIZABLE
     var headers = {};
