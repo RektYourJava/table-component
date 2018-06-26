@@ -89,12 +89,13 @@ $(document).ready(function() {
 
     var buildListColumns = function() {
         var columns = $('th:not(.head_column_criteria):not(.head_column_criteria_parent)');
+        var $li = '';
         columns.each(function(i, e) {
-            debugger;
             var $e = $(e);
             var text = $e.text();
-            var $li = '<li>' + text + '</li>';
+            $li = $li.concat('<li class="list-group-item">' + text + '</li>');
         });
+        $('#list-group-columns').append($li);
     };
 
     //
