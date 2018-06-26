@@ -79,6 +79,10 @@ $(document).ready(function() {
     // });
     //------------------------------------------------------------------
 
+
+    /**
+     * OVER COLUMN FOR FILTER
+     */
     $('th.head_column_criteria').on('mouseover', function(e) {
         var $th = $(e.target).closest('th');
         var $table = $th.closest('table');
