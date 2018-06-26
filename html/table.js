@@ -69,15 +69,29 @@ $(document).ready(function() {
 
     //-------------------------------EDIT TD-----------------------------------
     // $('td').on('click', function(e) {
-    //     debugger;
     //     var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
     //     var $span = $td.find('span');
     //     var content = $span.text();
-    //     var input = '<input class="input_edit" value="' + content + '">';
+    //     var input = '<input type="text" id="inputSMEx" class="form-control input_edit" value="' + content + '">';
     //     $span.remove();
     //     $td.append(input);
     // });
     //------------------------------------------------------------------
+
+
+
+    // HIDE COLUMNS OPTIONS
+    $('#hide_column_panel').on('click', function(e) {
+
+        buildListColumns();
+        $('.modal').modal('show');
+    });
+
+    var buildListColumns = function() {
+        var columns = $('th:not(.head_column_criteria):not(.head_column_criteria_parent)');
+    };
+
+    //
 
 
     /**
@@ -105,8 +119,6 @@ $(document).ready(function() {
     });
     $('th.head_column_criteria').on('click', function(e) {
         var $th = $(e.target).closest('th');
-        var $table = $th.closest('table');
-        var column = $th.attr('data-column');
         if ($th.hasClass('filter_criteria_selectable')) {
             $th.removeClass('filter_criteria_selectable');
         } else {
@@ -116,7 +128,7 @@ $(document).ready(function() {
 
     //HOVER TD
     $('td').on('mouseover', function(e) {
-        var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
+        var $td = $(e.target).is('span') || $(e.target).is('input') ? $(e.target).parent() : $(e.target);
         var $table = $td.closest('table');
         var $tbody = $td.closest('tbody');
         var position = $td.parent().attr('data-position');
@@ -128,16 +140,13 @@ $(document).ready(function() {
             $e.addClass('simulateHover');
         });
         $('#' + $table.attr('id') + ' td[data-column=' + column + ']').each(function(i, e) {
-            if ($(e).is("span")) {
-                console.log("span");
-            }
             var $e = $(e);
             $e.addClass('simulateHover');
         });
         $th.addClass('simulateHover');
     });
     $('td').on('mouseleave', function(e) {
-        var $td = $(e.target).is('span') ? $(e.target).parent() : $(e.target);
+        var $td = $(e.target).is('span') || $(e.target).is('input') ? $(e.target).parent() : $(e.target);
         var $tbody = $td.closest('tbody');
         var position = $td.parent().attr('data-position');
         var column = $td.attr('data-column');
@@ -155,7 +164,6 @@ $(document).ready(function() {
         $th.removeClass('simulateHover');
     });
     //------------------------------------------------------------------
-
 
     // BUILD VERTICAL SCROLL
     var rowCount = -15;

@@ -25,11 +25,13 @@
 </head>
 
 <body>
+
     <div class="containers">
         <!--
             OPTIONNAL_______________________
         -->
         <div id="table-panel">
+
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span><i class="fas fa-wrench"></i> Outils</span>
                 </button>
@@ -49,18 +51,20 @@
                 <tbody data-opposite-side="right">
                 </tbody>
             </table>
+            <div id="drag"></div>
         </div>
         <div id="right-div">
+            <div id="drag"></div>
             <table id="right-table">
                 <thead>
                     <tr>
-                        <th COLSPAN=2><span>Entité</span></th>
-                        <th COLSPAN=8><span>Profil Utilisateur</span></th>
-                        <th COLSPAN=4><span>Métier</span></th>
-                        <th COLSPAN=4><span>Type prestation</span></th>
-                        <th COLSPAN=4><span>Technologie</span></th>
-                        <th COLSPAN=3><span>Méhtode</span></th>
-                        <th COLSPAN=3><span>Domaine</span></th>
+                        <th COLSPAN=2 class="head_column_criteria_parent"><span>Entité</span></th>
+                        <th COLSPAN=8 class="head_column_criteria_parent"><span>Profil Utilisateur</span></th>
+                        <th COLSPAN=4 class="head_column_criteria_parent"><span>Métier</span></th>
+                        <th COLSPAN=4 class="head_column_criteria_parent"><span>Type prestation</span></th>
+                        <th COLSPAN=4 class="head_column_criteria_parent"><span>Technologie</span></th>
+                        <th COLSPAN=3 class="head_column_criteria_parent"><span>Méhtode</span></th>
+                        <th COLSPAN=3 class="head_column_criteria_parent"><span>Domaine</span></th>
                     </tr>
                     <tr>
                         <!--
@@ -189,6 +193,30 @@
         </div>
     </div>
     <div class="resize-vertical-bar"></div>
+
 </body>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Gestion de l'affichage des colonnes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group-columns">
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="validate_hide_column">Valider</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 
 </html>

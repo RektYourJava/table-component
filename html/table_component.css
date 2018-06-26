@@ -1,6 +1,6 @@
 #left-table tr:hover td,
 #right-table tr:hover td {
-    background: #a5a5a500;
+    background: #ccf2f8;
 }
 
 table tbody span {
@@ -40,7 +40,7 @@ td {
 
 #left-table tr:hover td,
 #right-table tr:hover td {
-    background: #a5a5a500;
+    background: #ccf2f8;
 }
 
 #left-table thead span {

@@ -13,14 +13,11 @@ body {
 }
 
 .simulateHover {
-    background-color: #a5a5a500 !important;
+    background-color: #ccf2f8 !important;
 }
 
 .input_edit {
-    height: 44px;
-    width: 246px;
-    border: 2px solid black;
-    font-family: "montserrat";
+    height: 21px !important;
 }
 
 .containers {
@@ -29,7 +26,7 @@ body {
 }
 
 .sortable {
-    background-color: #a5a5a500 !important;
+    background-color: #e4e2e2f7 !important;
     cursor: pointer;
 }
 
