@@ -3,6 +3,10 @@
     background: #ccf2f8;
 }
 
+.hideComponent {
+    display: none !important;
+}
+
 table tbody span {
     float: left;
     overflow: hidden;

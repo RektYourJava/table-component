@@ -3,3 +3,17 @@
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
+.list-group-item:hover {
+    background-color: rgb(204, 204, 204);
+    cursor: pointer;
+}
+
+.list-group-item.selected {
+    background-color: rgba(58, 206, 21, 0.3);
+    cursor: pointer;
+}
+
+.eye_column {
+    margin-left: 18px;
+}

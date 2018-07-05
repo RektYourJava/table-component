@@ -82,10 +82,39 @@ $(document).ready(function() {
 
     // HIDE COLUMNS OPTIONS
     $('#hide_column_panel').on('click', function(e) {
-
+        var columnsToHide = [];
         buildListColumns();
+        $('.list-group-item').off().on('click', function(e) {
+            var $e = $(e.target);
+            if ($e.hasClass('selected')) {
+                remove(columnsToHide, $e.attr('data-column'));
+                $e.find('i').addClass('hideComponent');
+                $e.removeClass('selected');
+            } else {
+                columnsToHide.push($e.attr('data-column'));
+                $e.find('i').removeClass('hideComponent');
+                $e.addClass('selected');
+            }
+        });
+        $('#validate_hide_column').on('click', function(e) {
+            for (let index = 0; index < columnsToHide.length; index++) {
+                const e = columnsToHide[index];
+                $('th:not(.head_column_criteria):not(.head_column_criteria_parent)[data-column="' + e + '"]').addClass('hideComponent');
+                $('td:not(.head_column_criteria):not(.head_column_criteria_parent)[data-column="' + e + '"]').addClass('hideComponent');
+            }
+            $('.modal').modal('toggle');
+        });
         $('.modal').modal('show');
     });
+
+    var remove = function(array, element) {
+        for (let index = 0; index < array.length; index++) {
+            if (array[index] === element) {
+                array.splice(index, 1);
+            }
+        }
+    }
+
 
     var buildListColumns = function() {
         var columns = $('th:not(.head_column_criteria):not(.head_column_criteria_parent)');
@@ -93,10 +122,13 @@ $(document).ready(function() {
         columns.each(function(i, e) {
             var $e = $(e);
             var text = $e.text();
-            $li = $li.concat('<li class="list-group-item">' + text + '</li>');
+            var column = $e.attr('data-column');
+            $li = $li.concat('<li class="list-group-item" data-column="' + column + '">' + text + '<i class="far fa-eye-slash eye_column hideComponent"></i></li>');
         });
         $('#list-group-columns').append($li);
     };
+
+
 
     //
 
